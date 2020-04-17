@@ -1,0 +1,90 @@
+<html>
+    <head>
+        <script src="vue.js"></script>
+        <style>
+            .box{
+                width: 100px;
+                height: 100px;
+                background-color: gray;
+                display: inline-block;
+            }
+            .red{
+                background-color: red;
+            }
+            .green{
+                background-color:green;
+            }
+            .blue{
+                background-color:blue;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="app">
+            <h1 v-once>{{ title }}</h1>
+            {{ sayHello() }} - <a :href="link"> Google </a>
+            <p v-html="finishedLink"></p>
+            <p @mousemove="updateCordinates">
+                 Cordinates: {{ x }} / {{ y }}
+                 - <span @mousemove.stop>DEAD SPOT</span>
+            </p>
+            <button @click="increase(2, $event)">click me</button>
+            <button @click="counter++">click me</button>
+            <button @click="secondCounter++"> Increse Second </button>
+            {{ counter > 10 ? `${counter} is gather than 10` : counter === 10 ? `${counter} is equal to 10` : `${counter} is smaller than 10` }}
+
+            {{ counter }}
+            <input type="text" @keyup.enter="alertMe">
+
+            <hr>
+            <hr>
+            <div class="box" 
+            @click="attachRed= !attachRed"
+            :class="divClass"></div>
+            <div class="box" :class="{red :attachRed }"></div>
+            <div class="box" :class="[color,{red :attachRed }]"></div>
+            <input type="text" v-model="color">
+        </div>
+    </body>
+<script>
+    new Vue({   
+        el: '#app',
+        data:{
+            counter:0,
+            title: 'Hello world',
+            link:'http://google.com',
+            finishedLink:'<a href="http://google.com"> Google </a>',
+            x:0,
+            y:0,
+            secondCounter:0,
+            attachRed: false,
+            color:'green'
+        },
+        methods: {
+            sayHello: function(){
+                this.title=' hello'
+                return this.title
+            },
+            updateCordinates: function(event){
+                this.x= event.clientX
+                this.y= event.clientY
+                
+            },
+            increase: function(step, event){
+                this.counter += step
+            },
+            alertMe: function(){
+                alert('alert')
+            }
+        },
+        computed: {
+            divClass: function(){
+                return{
+                    red: this.attachRed,
+                    blue: !this.attachRed
+                }
+            }
+        },
+    })
+</script>
+</html>
