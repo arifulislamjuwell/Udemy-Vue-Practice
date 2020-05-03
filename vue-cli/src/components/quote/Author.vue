@@ -1,0 +1,18 @@
+<template>
+<div>
+    <h3>
+        New Quote
+    </h3>
+</div> 
+
+</template>
+<script>
+export default {
+    destroyed: function(){
+        console.log('distroy authore')
+    }
+}
+</script>
+<style>
+
+</style>
