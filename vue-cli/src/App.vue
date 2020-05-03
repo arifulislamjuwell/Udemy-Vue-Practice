@@ -10,6 +10,7 @@
 
 
 <script>
+
     import UserApp from './components/user/User.vue'
 
     export default {

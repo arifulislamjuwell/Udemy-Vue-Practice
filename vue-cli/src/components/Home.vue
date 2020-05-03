@@ -5,6 +5,7 @@
 </template>
 
 <script>
+
 import ServerStatus from './ServerStatus.vue';
 export default {
     components:{
