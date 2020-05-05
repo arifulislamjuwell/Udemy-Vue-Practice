@@ -1,6 +1,6 @@
 <template>
     <div class="row">
-        <single-quote v-for="quote in quotes" :key="quote">{{ quote }}</single-quote>
+        <single-quote @click.native="catchIndex(index)" v-for="(quote, index) in quotes" :key="index">{{ quote }}</single-quote>
     </div>
 </template>
 
@@ -11,6 +11,11 @@ export default {
     props:['quotes'],
     components:{
         singleQuote: Quote
+    },
+    methods:{
+        catchIndex(index){
+            this.$emit('passIndex', index)
+        }
     }
 }
 </script>
