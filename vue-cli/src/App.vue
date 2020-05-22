@@ -1,15 +1,15 @@
 <template>
 <div>
-<custom-directive></custom-directive>
+<filter-mixin></filter-mixin>
 </div>
 </template>
 
 
 <script>
-import Directive from './components/CustomDirective'
+import FilteMixin from './components/FilterAndMixin'
 export default {
   components:{
-    customDirective: Directive
+    filterMixin: FilteMixin
   }
 }
 </script>
