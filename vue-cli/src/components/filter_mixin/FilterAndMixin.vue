@@ -12,18 +12,20 @@
                     <li v-for="fruit in filteredFruits" :key="fruit">{{ fruit }}</li>
                 </ul>
             </p>
+            <mixin-double></mixin-double>
         </div>
     </div>
 </template>
 
 <script>
+import Mixin from './Mixins'
+import {fruitMixin} from '../../fruitsMixin/fruitMixin'
 export default {
+        mixins:[fruitMixin],
     data(){
         return{
             text:'hello world',
-            fruits: [
-                'apple', 'orange', 'banana'
-            ],
+
             filterText:''
         }
     },
@@ -32,12 +34,8 @@ export default {
             return value.toUpperCase()
         }
     },
-    computed:{
-        filteredFruits(){
-            return this.fruits.filter((element)=> {
-                return element.match(this.filterText)
-            })
-        }
+    components: {
+        mixinDouble: Mixin
     }
 }
 </script>
